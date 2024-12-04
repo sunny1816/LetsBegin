@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run C++ Program</title>
+</head>
+<body>
+    <h1>Execute C++ Program</h1>
+    <button onclick="executeCpp()">Run Program</button>
+    <p id="result"></p>
+
+    <script>
+        async function executeCpp() {
+            document.getElementById('result').innerText = "Running...";
+
+            try {
+                const response = await fetch('/run_cpp');
+                const result = await response.text();
+                document.getElementById('result').innerText = result;
+            } catch (error) {
+                document.getElementById('result').innerText = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
